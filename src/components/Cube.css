@@ -94,7 +94,7 @@
     animation-name: bringfront;
     animation-duration: 500ms;
     animation-iteration-count: 1;
-    animation-delay: 200ms;
+    animation-delay: 150ms;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
 

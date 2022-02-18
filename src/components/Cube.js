@@ -49,7 +49,7 @@ const Cube = (props) => {
         setTimeout(() => {
             el.classList.add('animate-bringfront');
            
-            }, 5);
+            }, 50);
     };
 
 
@@ -79,7 +79,7 @@ const Cube = (props) => {
         }
         
         
-        setTimeout(() => {el.classList.add('animate-pushback')}, 5);
+        setTimeout(() => {el.classList.add('animate-pushback')}, 50);
 
     };
 
