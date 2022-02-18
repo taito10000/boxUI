@@ -1,0 +1,18 @@
+
+
+
+.cont {
+
+    position:fixed;
+    
+    
+    margin-left: 0px;
+    margin-right: 50%;
+    bottom: 0px;
+    width: 100%;
+    
+    transform-origin:0px 0px 0px;
+    transform-style:flat;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
+}

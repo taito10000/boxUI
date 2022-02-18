@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+
 import './App.css';
+import StarWars from './components/StarWars';
+import Cube from './components/Cube';
+import Footer from './components/Footer';
+import { useEffect, useState } from 'react';
+
 
 function App() {
+  
+  const [rotation, setRotation] = useState(0);
+
+  const changeRotation = (amount) => {
+    
+    setRotation(rotation+amount);
+    
+  };
+  
+  // const update = () => {
+
+  //   console.log("Rotation change");
+    
+  // };
+
+  // useEffect(update, [rotation]);
+  
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+    <div>
+      <div>
+      <Cube rota={rotation} />
+     
+      </div>
+      <div><Footer callback={changeRotation} /></div>
+      
     </div>
+
+
+
   );
 }
 
