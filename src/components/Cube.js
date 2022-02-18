@@ -49,7 +49,7 @@ const Cube = (props) => {
         setTimeout(() => {
             el.classList.add('animate-bringfront');
            
-            }, 0);
+            }, 5);
     };
 
 
@@ -79,7 +79,7 @@ const Cube = (props) => {
         }
         
         
-        setTimeout(() => {el.classList.add('animate-pushback')}, 0);
+        setTimeout(() => {el.classList.add('animate-pushback')}, 5);
 
     };
 
@@ -114,7 +114,7 @@ const Cube = (props) => {
             thecube.classList.add('animate-rotation');
             pushback(thecube.children[previous], previous)
             bringfront(thecube.children[facing], facing);
-        }, 0);
+        }, 10);
             
         
         setRot(neww);
