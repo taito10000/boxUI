@@ -76,19 +76,10 @@ const Cube = (props) => {
                 break;
         
             default: break;
-    }
+        }
         
         
-        
-        
-        
-        setTimeout(() => {
-
-            el.classList.add('animate-pushback');
-
-        }, 0
-
-        );
+        setTimeout(() => {el.classList.add('animate-pushback')}, 0);
 
     };
 
