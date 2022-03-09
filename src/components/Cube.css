@@ -57,29 +57,6 @@
         }
 }
 
-
-
-.perspective-container {
-    position:relative;
-    perspective-origin:70% 30%;
-    perspective: 140cm;
-}
-
-
-.container {
-    
-    transform-origin:0px 0px 0px;
-    transform-style: preserve-3d;
-    /*transform: rotateX(-15deg) rotateY(45deg) rotateZ(0deg);*/
-    display: block;
-    margin-top:250px;
-    margin-left: 51%;
-    transform-style: preserve-3d;
-    backface-visibility: visible;
-    
-    
-}
-
 .animate-rotation {
 
     animation-name: rotation;
@@ -111,14 +88,37 @@
 
 }
 
+.perspective-container {
+    
+    height: 500px;
+    perspective-origin:70% 30%;
+    perspective: 140cm;
+}
+
+
+.container {
+    
+
+    transform-origin:0px 0px 0px;
+    transform-style: preserve-3d;
+    /*transform: rotateX(-15deg) rotateY(45deg) rotateZ(0deg);*/
+    margin-top:250px;
+    margin-left: 51%;
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    
+    
+}
+
 
 .side1, .side2, .side3, .side4 {
-
+    
     transform-origin:402px 175px -2px;
     opacity: 0.2;
     position:absolute;
     text-align: center;
     font-size: 15rem;
+    color:white;
     width: 800px;
     height: 350px;
     top: 0px;

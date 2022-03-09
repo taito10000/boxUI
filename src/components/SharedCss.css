@@ -1,0 +1,60 @@
+
+:root {
+
+    --from-degrees: rotateZ(0deg);
+    --to-degrees: rotateZ(45deg);
+
+}
+
+
+
+
+
+
+
+
+@keyframes rotate {
+
+    from {transform: var(--from-degrees);}
+    to {transform: var(--to-degrees);}
+}
+
+.animate {
+
+    animation-name: rotate;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+
+
+}
+
+
+
+
+.element {
+
+    display: block;
+    background-color: rgb(65, 65, 192);
+    width: 200px;
+    height: 75px;
+   
+
+}
+
+.sub-container {
+    transform-origin:100px 37px;
+    display: block;
+   
+    
+}
+
+
+.container {
+
+    margin-left: 200px;
+    margin-top: 200px;
+
+
+
+}

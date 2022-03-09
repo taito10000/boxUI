@@ -15,16 +15,17 @@ const Cube = (props) => {
     
     const ACTIVE_TOP = -225;
     const [rot, setRot] = useState(0);
-    const [active, setActive] = useState(0);
+    const [activeCube, setActiveCube] = useState(0);
+    const [face, setFace] = useState(0);
     
 
 
 
-    const bringfront = (el, sideNum) => {
+    const bringfront = (cube, el, sideNum) => {
         
+        //const thecube = document.getElementById('cubecontainer');
+        const thecube = cube;
 
-
-        const thecube = document.getElementById('cubecontainer');
         switch (sideNum){
             case 0: thecube.style.setProperty('--sides-bring-transform-from', `translate3d(-400px, -175px, 400px)`);
                 thecube.style.setProperty('--sides-bring-transform-to', `translate3d(-450px, ${ACTIVE_TOP}px, 450px)`);
@@ -54,11 +55,12 @@ const Cube = (props) => {
 
 
 
-    const pushback = (el, sideNum) => {
-        console.log("PushBack: ", sideNum);
-        el.classList.remove('animate-pushback');
-        const thecube = document.getElementById('cubecontainer');
+    const pushback = (cube, el, sideNum) => {
         
+        el.classList.remove('animate-pushback');
+        //const thecube = document.getElementById('cubecontainer');
+        const thecube = cube;
+
         switch (sideNum){
             case 0: thecube.style.setProperty('--sides-push-transform-from', `translate3d(-400px, ${ACTIVE_TOP}px, 450px)`);
                 thecube.style.setProperty('--sides-push-transform-to', `translate3d(-400px, -175px, 400px)`);
@@ -79,32 +81,46 @@ const Cube = (props) => {
         }
         
         
-        setTimeout(() => {el.classList.add('animate-pushback')}, 50);
+        setTimeout(() => {el.classList.add('animate-pushback')}, 60);
 
     };
 
+    const activateCube = () => {
+        console.log("ACTIVATE NEW CUBE");
+        setActiveCube(props.active);
+        setFace(0);
+    };
+
+
     const rotate = () => {
-        
-        let previous = 2;
+        console.log("ACTIVE CUBE : ", activeCube);
+        let previous = null;
         let facing = 0;
-        const thecube = document.getElementById('cubecontainer');
+        // const thecube = document.getElementById('cubecontainer');
+        // const sides = Array.from(thecube.children);
+        // thecube.classList.remove('animate-rotation');
+        
+        const cubes = document.querySelectorAll('#cubecontainer');
+        
+        const thecube = cubes[props.active];
         const sides = Array.from(thecube.children);
         thecube.classList.remove('animate-rotation');
-        
-       
+
+
+
         const neww = props.rota;
         
         if (props.rota > rot) {
-            previous = active;
-            facing = active - 1;
+            previous = face;
+            facing = face - 1;
             if (facing === -1) {facing = 3};
-            setActive(facing);
+            setFace(facing);
         };
         if (props.rota < rot) {
-            previous = active;
-            facing = active +1;
-            if (facing === 4){facing=0};
-            setActive(facing);
+            previous = face;
+            facing = face +1;
+            if (facing === 4) {facing=0};
+            setFace(facing);
         };
 
         thecube.style.setProperty('--main-rotateYfrom', `${rot}deg`);
@@ -112,8 +128,9 @@ const Cube = (props) => {
         setTimeout(() => {
     
             thecube.classList.add('animate-rotation');
-            pushback(thecube.children[previous], previous)
-            bringfront(thecube.children[facing], facing);
+
+            if(previous !== null) {pushback(thecube, thecube.children[previous], previous)};
+            bringfront(thecube, thecube.children[facing], facing);
         }, 10);
             
         
@@ -121,20 +138,27 @@ const Cube = (props) => {
         
     };
 
+    
+    
     useEffect(rotate, [props.rota]);
 
+    useEffect(activateCube, [props.active]);
+    useEffect(rotate, [activeCube]);
+
+   
+   
+   
+   
+    
 
 
-
-
-
-    const Side1 = (props) => {
+    const Side1 = () => {
 
         return (
     
             <div className="side1">
-    
-                Side 1
+               
+              
     
             </div>
         );
@@ -174,16 +198,17 @@ const Cube = (props) => {
         );
     };
 
+
+
+    
+
     const classes = 'container animate-rotation';
-
-
-
     return (
        
        <div className="perspective-container">
          <div id="cubecontainer" className={classes}>
 
-            <Side1 />
+            <Side1></Side1>
             <Side2 />
             <Side3 />
             <Side4 />
